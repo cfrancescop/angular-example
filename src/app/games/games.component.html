@@ -1,0 +1,39 @@
+<section class="row flex space-between">
+    <mat-form-field appearance="fill">
+        <mat-label>Scegli la data</mat-label>
+        <!-- #docregion toggle -->
+        <input matInput [matDatepicker]="picker" 
+        [(ngModel)]="dataSelezionata">
+        <mat-hint>dd/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- #enddocregion toggle -->
+    </mat-form-field>
+    <p>Data selezionata : {{dataSelezionata | date:'dd/MM/yyyy'}}</p>
+    <button mat-stroked-button color="primary">Ricerca</button>
+</section>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
