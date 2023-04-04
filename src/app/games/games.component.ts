@@ -23,7 +23,10 @@ const ELEMENT_DATA: GameElement[] = [
 })
 export class GamesComponent {
   constructor(private datePipe:DatePipe){}
-  displayedColumns: string[] = ['name', 'description', 'price'];
+  displayedColumns: string[] = ['name', 
+  'description',
+  'dataPubblicazione',
+   'price'];
   dataSource =  new MatTableDataSource(ELEMENT_DATA);
   dataSelezionata:Date|null=null;
 
